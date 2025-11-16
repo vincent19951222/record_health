@@ -1,0 +1,120 @@
+{
+  "timestamp": "2025-11-16T00:00:00.000Z",
+  "project_name": "solo",
+  "project_type": "react-typescript-vite",
+  "analysis": {
+    "phase": "completed",
+    "coverage_percentage": 95,
+    "files_scanned": 42,
+    "total_files_estimated": 44,
+    "truncated": false
+  },
+  "modules": [
+    {
+      "name": "core-app",
+      "path": "src",
+      "type": "main",
+      "entry_point": "src/main.tsx",
+      "router": "src/App.tsx",
+      "components_count": 15,
+      "pages_count": 5,
+      "services_count": 2,
+      "has_tests": false,
+      "coverage": 100
+    }
+  ],
+  "technology_stack": {
+    "frontend": {
+      "framework": "React 18",
+      "language": "TypeScript 5",
+      "bundler": "Vite 6",
+      "styling": "Tailwind CSS 3",
+      "routing": "React Router DOM 7",
+      "state_management": "Zustand 5"
+    },
+    "tools": {
+      "linter": "ESLint 9",
+      "deployment": "Vercel",
+      "icons": "Lucide React"
+    }
+  },
+  "directories_structure": {
+    "src": {
+      "components": {
+        "ui": ["SketchButton.tsx", "SketchInput.tsx", "SketchSelect.tsx", "SketchCard.tsx", "SketchTag.tsx"],
+        "pages": ["TodayStats.tsx", "TrendChart.tsx", "VoiceRecorder.tsx", "VoiceConfirmModal.tsx", "ManualRecordModal.tsx", "HistoryRecords.tsx", "NavigationBar.tsx", "DetailChart.tsx", "DetailHistoryList.tsx", "Empty.tsx"]
+      },
+      "pages": ["HomePage.tsx", "Home.tsx", "WeightDetailPage.tsx", "ExerciseDetailPage.tsx", "BloodPressureDetailPage.tsx", "BloodSugarDetailPage.tsx"],
+      "services": ["healthDataService.ts", "voiceRecognitionService.ts"],
+      "types": ["health.ts"],
+      "hooks": ["useTheme.ts"],
+      "lib": ["utils.ts"],
+      "root": ["main.tsx", "App.tsx", "index.css", "vite-env.d.ts"]
+    }
+  },
+  "coverage_details": {
+    "scanned_files": [
+      "package.json",
+      "tsconfig.json",
+      "vite.config.ts",
+      "eslint.config.js",
+      "tailwind.config.js",
+      "postcss.config.js",
+      "index.html",
+      "src/main.tsx",
+      "src/App.tsx",
+      "src/types/health.ts",
+      "src/services/healthDataService.ts",
+      "src/pages/HomePage.tsx",
+      "src/components/ui/SketchButton.tsx",
+      "README.md",
+      "CLAUDE.md",
+      ".gitignore",
+      ".vercel/project.json"
+    ],
+    "ignored_files": [
+      "node_modules/**",
+      "dist/**",
+      "*.log",
+      ".DS_Store"
+    ],
+    "missing_coverage": []
+  },
+  "gaps_identified": [
+    {
+      "category": "testing",
+      "description": "项目缺少测试配置和测试文件",
+      "severity": "medium",
+      "recommendation": "添加 Vitest + React Testing Library 配置"
+    },
+    {
+      "category": "documentation",
+      "description": "缺少 API 文档和服务接口说明",
+      "severity": "low",
+      "recommendation": "补充 voiceRecognitionService 的 API 文档"
+    }
+  ],
+  "development_workflow": {
+    "commands": {
+      "dev": "vite",
+      "build": "tsc -b && vite build",
+      "preview": "vite preview",
+      "lint": "eslint .",
+      "check": "tsc -b --noEmit"
+    },
+    "pre_commit_checks": ["npm run lint", "npm run check"],
+    "deployment": "vercel_auto_deploy"
+  },
+  "architecture_patterns": {
+    "data_flow": "localStorage_singleton",
+    "component_architecture": "functional_components_hooks",
+    "styling_pattern": "tailwind_utility_first",
+    "state_management": "zustand_global_state"
+  },
+  "next_steps": [
+    "配置测试环境（Vitest + React Testing Library）",
+    "为核心组件添加单元测试",
+    "完善 voiceRecognitionService 的文档",
+    "考虑添加 CI/CD 流程"
+  ]
+}
