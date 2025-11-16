@@ -5,7 +5,6 @@ import { ExerciseDetailPage } from "./pages/ExerciseDetailPage";
 import { BloodPressureDetailPage } from "./pages/BloodPressureDetailPage";
 import { BloodSugarDetailPage } from "./pages/BloodSugarDetailPage";
 import { NavigationBar } from "./components/NavigationBar";
-import { VoiceRecorder } from "./components/VoiceRecorder";
 import { VoiceConfirmModal } from "./components/VoiceConfirmModal";
 import { useState } from "react";
 
@@ -25,7 +24,7 @@ export default function App() {
 
   return (
     <Router>
-      <NavigationBar />
+      <NavigationBar onRecognitionComplete={handleVoiceRecognition} />
       <div className="pt-14">
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -34,9 +33,6 @@ export default function App() {
           <Route path="/blood-pressure" element={<BloodPressureDetailPage />} />
           <Route path="/blood-sugar" element={<BloodSugarDetailPage />} />
         </Routes>
-      </div>
-      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
-        <VoiceRecorder onRecognitionComplete={handleVoiceRecognition} />
       </div>
       <VoiceConfirmModal isOpen={showVoiceModal} onClose={handleVoiceModalClose} result={voiceResult} />
     </Router>

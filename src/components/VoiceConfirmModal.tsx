@@ -85,7 +85,14 @@ export const VoiceConfirmModal: React.FC<VoiceConfirmModalProps> = ({
     return `${bed.getHours()}:${bed.getMinutes().toString().padStart(2, '0')} - ${wake.getHours()}:${wake.getMinutes().toString().padStart(2, '0')}`;
   };
 
-  const sections = [
+  type SectionEntry = {
+    title: string;
+    icon: string;
+    data: WeightRecord | BloodPressureRecord | BloodSugarRecord | ExerciseRecord | SleepRecord;
+    render: (data: any) => JSX.Element;
+  };
+
+  const sections: SectionEntry[] = [
     {
       title: '体重',
       icon: '⚖️',

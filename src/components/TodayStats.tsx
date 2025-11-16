@@ -18,7 +18,6 @@ export const TodayStats: React.FC<TodayStatsProps> = ({ records }) => {
   // 获取今日各项数据
   const todayWeight = todayRecords.find(r => r.type === 'weight');
   const todayExercise = todayRecords.filter(r => r.type === 'exercise');
-  const todaySleep = todayRecords.find(r => r.type === 'sleep');
   const latestBloodPressure = records.find(r => r.type === 'bloodPressure');
   const latestBloodSugar = records.find(r => r.type === 'bloodSugar');
 
@@ -34,23 +33,13 @@ export const TodayStats: React.FC<TodayStatsProps> = ({ records }) => {
     return remainingMinutes > 0 ? `${hours}小时${remainingMinutes}分钟` : `${hours}小时`;
   };
 
-  const formatHours = (timestamp: number) => {
-    const date = new Date(timestamp);
-    return `${date.getHours()}:${date.getMinutes().toString().padStart(2, '0')}`;
-  };
+  
 
   const stats = [
     {
       title: '今日体重',
       value: todayWeight ? `${(todayWeight.data as any).value}kg` : '未记录',
       icon: '⚖️'
-    },
-    {
-      title: '今日睡眠',
-      value: todaySleep ? 
-        `${formatTime((todaySleep.data as any).duration)} (${formatHours((todaySleep.data as any).bedTime)}-${formatHours((todaySleep.data as any).wakeTime)})` : 
-        '未记录',
-      icon: '😴'
     },
     {
       title: '最近血压',
@@ -72,7 +61,7 @@ export const TodayStats: React.FC<TodayStatsProps> = ({ records }) => {
   ];
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 mb-8">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-8">
       {stats.map((stat, index) => (
         <div key={index} className="p-6 bg-white border-2 border-black rounded-none">
           <div className="flex items-center justify-between mb-2">

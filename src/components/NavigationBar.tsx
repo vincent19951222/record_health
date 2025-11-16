@@ -1,8 +1,13 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { VoiceRecorder } from './VoiceRecorder';
 import { Home, Scale, Activity, Droplets, HeartPulse } from 'lucide-react';
 
-export const NavigationBar: React.FC = () => {
+interface NavigationBarProps {
+  onRecognitionComplete: (result: any) => void;
+}
+
+export const NavigationBar: React.FC<NavigationBarProps> = ({ onRecognitionComplete }) => {
   const location = useLocation();
 
   const navItems = [
@@ -19,6 +24,11 @@ export const NavigationBar: React.FC = () => {
         <div className="flex justify-between items-center h-14">
           <div className="text-lg font-semibold text-black uppercase">吃树 - 语音记录你的健康</div>
           <div className="flex gap-2">
+            {/* 语音录制按钮 */}
+            <div className="-ml-2">
+              <VoiceRecorder onRecognitionComplete={onRecognitionComplete} />
+            </div>
+
             {navItems.map(({ path, label, Icon }) => {
               const isActive = location.pathname === path;
               return (
@@ -27,8 +37,8 @@ export const NavigationBar: React.FC = () => {
                   to={path}
                   className={`
                     inline-flex items-center gap-1 px-3 py-2 text-sm font-medium uppercase border-2 border-black rounded-none
-                    ${isActive 
-                      ? 'bg-[#50A7C2] text-black' 
+                    ${isActive
+                      ? 'bg-[#50A7C2] text-black'
                       : 'bg-white text-black hover:bg-gray-100'
                     }
                     transition duration-75
